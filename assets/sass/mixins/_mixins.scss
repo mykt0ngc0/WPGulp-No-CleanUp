@@ -1,0 +1,76 @@
+// Strip any units of a value (ex: em, px, vw, vh)
+@function strip-units($value) {
+	@return ($value / ($value * 0 + 1));
+}
+
+// Fluid Typography
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+	$u1: unit($min-vw);
+	$u2: unit($max-vw);
+	$u3: unit($min-font-size);
+	$u4: unit($max-font-size);
+
+	@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+		& {
+			font-size: $min-font-size;
+			@media screen and (min-width: $min-vw) {
+				font-size: calc(
+					#{$min-font-size} + #{strip-units($max-font-size - $min-font-size)} *
+						((100vw - #{$min-vw}) / #{strip-units($max-vw - $min-vw)})
+				);
+			}
+			@media screen and (min-width: $max-vw) {
+				font-size: $max-font-size;
+			}
+		}
+	}
+}
+
+// Grid Contaier
+@mixin grid-container($min-vw, $num-cols, $num-rows, $gap) {
+	@media (min-width: $min-vw) {
+		display: grid;
+		grid-gap: $gap;
+		grid-template-columns: repeat($num-cols, [col] 1fr);
+		grid-template-rows: repeat($num-rows, [row] auto);
+		justify-content: center;
+	} //media
+}
+// Grid Column
+@mixin grid-column($min-vw, $col-start, $span, $row_start) {
+	@media (min-width: $min-vw) {
+		grid-column: col #{$col-start} / span $span;
+		grid-row: row $row_start;
+	} //media
+}
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: '';
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get($columns, $numberColumns) -
+		(($columns__margin * ($numberColumns - 1)) / $numberColumns);
+}

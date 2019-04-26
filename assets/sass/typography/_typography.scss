@@ -1,0 +1,99 @@
+/*--------------------------------------------------------------
+# Font Variables
+--------------------------------------------------------------*/
+$font_primary: 'Open Sans', sans-serif;
+$font_secondary: 'IBM Plex Sans', sans-serif;
+$font_mono: 'MaisonNeueMono', 'Courier New', Courier, monospace;
+$font_pre: $font_mono;
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	font-family: $font_primary;
+	color: #fff;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*--------------------------------------------------------------
+# Headings
+--------------------------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Copy
+--------------------------------------------------------------*/
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	font-family: $font_pre;
+	@include font-size(0.9375);
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+	font-family: $font_mono;
+	@include font-size(0.9375);
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+mark,
+ins {
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+p {
+	margin: 0;
+
+	&:not(:last-of-type) {
+		margin-bottom: 1rem;
+	}
+}
+
+/* ----------------------------------------------------- */
