@@ -7,18 +7,18 @@
  * @package WPGulp
  */
 
-const target_folder = '../your-theme-plugin-folder'; // your theme/plugin folder
+const target_folder = '../ui/'; // your theme/plugin folder
 
 module.exports = {
 	// Project options.
-	projectURL: 'myk.local', // Local project URL of your already running WordPress site. Could be something like wpgulp.local or localhost:3000 depending upon your local WordPress setup.
-	productURL: target_folder + '/', // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
+	projectURL: 'test.local', // Local project URL of your already running WordPress site. Could be something like wpgulp.local or localhost:3000 depending upon your local WordPress setup.
+	productURL: target_folder, // Theme/Plugin URL. Leave it like it is, since our gulpfile.js lives in the root folder.
 	browserAutoOpen: false,
 	injectChanges: true,
 
 	// Style options.
 	styleSRC: './assets/sass/style.scss', // Path to main .scss file.
-	styleDestination: target_folder + '/dist/', // Path to place the compiled CSS file. Default set to root folder.
+	styleDestination: target_folder, // Path to place the compiled CSS file. Default set to root folder.
 	styleMainFile: 'main',
 	outputStyle: 'compressed', // Available options → 'compact' or 'compressed' or 'nested' or 'expanded'
 	errLogToConsole: true,
@@ -36,12 +36,12 @@ module.exports = {
 
 	// bundleJS options
 	jsBundleSRC: './assets/js/compiled/*.js',
-	jsBundleDestination: target_folder + '/dist/',
+	jsBundleDestination: target_folder + 'dist/',
 	jsBundleFile: 'bundle',
 
 	// Images options.
 	imgSRC: './assets/img/*', // Source folder of images which should be optimized and watched. You can also specify types e.g. raw/**.{png,jpg,gif} in the glob.
-	imgDST: target_folder + '/dist/', // Destination folder of optimized images. Must be different from the imagesSRC folder.
+	imgDST: target_folder + 'dist/img/', // Destination folder of optimized images. Must be different from the imagesSRC folder.
 
 	// Watch files paths.
 	watchStyles: './assets/sass/**/*.scss', // Path to all *.scss files inside css folder and inside them.
